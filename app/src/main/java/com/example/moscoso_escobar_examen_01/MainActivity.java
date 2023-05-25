@@ -39,19 +39,20 @@ public class MainActivity extends AppCompatActivity {
         String resultado = "";
         int valor = 0;
 
-        for (int i = dato1.length() - 1; i == 0; i--) {
-            valor = Integer.parseInt(dato2.substring(i)) + Integer.parseInt(dato1.substring(i)) + sobrante;
+        for (int i = dato1.length() - 1; i > 0; i--) {
+            valor = Integer.parseInt(dato2.charAt(i)) + Integer.parseInt(dato1.substring(i,1)) + sobrante;
 
             if (valor > 10){
                 valor = valor - 10;
                 sobrante = 1;
             }
 
-            if (sobrante == 1)
-                resultado = String.valueOf(sobrante) + String.valueOf(valor) + resultado;
-            else
-                resultado = String.valueOf(valor) + resultado;
+            resultado = String.valueOf(valor) + resultado;
+
         }
+
+        if (sobrante == 1)
+            resultado = String.valueOf(sobrante) + resultado;
 
         return resultado;
     }
@@ -59,9 +60,6 @@ public class MainActivity extends AppCompatActivity {
     public void onClick_SumarNumero(View view){
         String dato1 = numero1.getText().toString(); //12345
         String dato2 = numero2.getText().toString(); //12
-        String resultado = numero2.getText().toString();
-
-
 
         if (dato2.length() != dato1.length()) {
             if (dato1.length() > dato2.length()){

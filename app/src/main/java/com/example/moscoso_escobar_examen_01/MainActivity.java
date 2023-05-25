@@ -33,8 +33,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public String sumar(String dato1, String dato2){
+
+        short sobrante = 0;
+        String resultado = "";
+        int valor = 0;
+
+        for (int i = dato1.length() - 1; i == 0; i--) {
+            valor = Integer.parseInt(dato2.substring(i,1)) + Integer.parseInt(dato1.substring(i,1)) + sobrante;
+
+            if (valor > 10){
+                valor = valor - 10;
+                sobrante = 1;
+            }
+
+            resultado = valor + resultado;
+        }
+
+        return "";
+    }
+
     public void onClick_SumarNumero(View view){
-        short acarreo = 0;
         String dato1 = numero1.getText().toString(); //12345
         String dato2 = numero2.getText().toString(); //12
         String resultado = numero2.getText().toString();

@@ -44,6 +44,13 @@
         android:id="@+id/buttonSumar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onClick_SumarNumero"
         android:text="SUMAR" />
+
+    <TextView
+        android:id="@+id/textViewPruebas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
 </LinearLayout>

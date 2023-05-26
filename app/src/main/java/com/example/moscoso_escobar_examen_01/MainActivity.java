@@ -42,18 +42,19 @@ public class MainActivity extends AppCompatActivity {
         for (int i = dato1.length() - 1; i >= 0; i--) {
             valor = Integer.parseInt(String.valueOf(dato2.charAt(i))) + Integer.parseInt(String.valueOf(dato1.charAt(i))) + sobrante;
 
-            if (valor > 10){
+            if (valor >= 10){
                 valor = valor - 10;
                 sobrante = 1;
+                resultado = String.valueOf(valor) + resultado;
+            } else {
+                resultado = String.valueOf(valor) + resultado;
             }
-
-            resultado = String.valueOf(valor) + resultado;
 
         }
 
-        if (sobrante == 1)
-            valor = valor + sobrante;
-            resultado = String.valueOf(valor) + resultado;
+        if (sobrante == 1){
+            resultado = String.valueOf(sobrante) + resultado;
+        }
 
         return resultado;
     }

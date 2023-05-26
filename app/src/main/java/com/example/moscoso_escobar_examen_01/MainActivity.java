@@ -57,11 +57,14 @@ public class MainActivity extends AppCompatActivity {
     public void onClick_SumarNumero(View view){
         String dato1 = numero1.getText().toString(); //12345
         String dato2 = numero2.getText().toString(); //12
+        int longa = dato1.length();
+        int longb = dato2.length();
+
 
         if (dato2.length() != dato1.length()) {
             if (dato1.length() > dato2.length()){
 
-                for (int i = 0; i < (dato1.length() - dato2.length()); i++) {
+                for (int i = 0; i < (longa - longb); i++) {
                     dato2 = "0" + dato2; //0012
                 }
                 //pruebas.setText(dato1.charAt(0));
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (dato2.length() > dato1.length()) {
-                for (int i = 0; i < (dato2.length() - dato1.length()); i++) {
+                for (int i = 0; i < (longb - longa); i++) {
                     dato1 = "0" + dato1; //0012
                 }
             }

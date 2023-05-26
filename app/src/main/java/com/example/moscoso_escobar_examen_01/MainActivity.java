@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         String resultado = "";
         int valor = 0;
 
-        for (int i = dato1.length() - 1; i > 0; i--) {
-            valor = Integer.parseInt(dato2.charAt(i)) + Integer.parseInt(dato1.substring(i,1)) + sobrante;
+        for (int i = dato1.length() - 1; i >= 0; i--) {
+            valor = Integer.parseInt(String.valueOf(dato2.charAt(i))) + Integer.parseInt(String.valueOf(dato1.charAt(i))) + sobrante;
 
             if (valor > 10){
                 valor = valor - 10;
@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (sobrante == 1)
-            resultado = String.valueOf(sobrante) + resultado;
+            valor = valor + sobrante;
+            resultado = String.valueOf(valor) + resultado;
 
         return resultado;
     }

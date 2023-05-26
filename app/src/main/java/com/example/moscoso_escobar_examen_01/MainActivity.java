@@ -20,16 +20,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TI2023_CLAVE_00
-
         numero1 = findViewById(R.id.numero1);
         numero2 = findViewById(R.id.numero2);
         sumarButton = findViewById(R.id.buttonSumar);
         pruebas = findViewById(R.id.textViewPruebas);
-
-        short acarreo = 0;
-
-
 
     }
 
@@ -47,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 sobrante = 1;
                 resultado = String.valueOf(valor) + resultado;
             } else {
+                sobrante = 0;
                 resultado = String.valueOf(valor) + resultado;
             }
 

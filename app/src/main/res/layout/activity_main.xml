@@ -31,15 +31,6 @@
         android:hint="Numero 2"
         android:inputType="number" />
 
-    <EditText
-        android:id="@+id/resultado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:editable="false"
-        android:ems="10"
-        android:hint="Resultado"
-        android:inputType="text" />
-
     <Button
         android:id="@+id/buttonSumar"
         android:layout_width="match_parent"
@@ -51,6 +42,7 @@
         android:id="@+id/textViewPruebas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:hint="Resultado"
+        android:textSize="22sp" />
 
 </LinearLayout>

@@ -9,7 +9,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,11 +23,14 @@ public class LoginPXMC extends AppCompatActivity {
     private SQLiteOpenHelper sqLiteOpenHelper;
     private EditText usuario;
     private EditText contraseña;
-
+    private View layoutLogin;
+    private Button aceptar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        layoutLogin = findViewById(R.id.layoutLogin);
 
         sqLiteOpenHelper = new SQLiteOpenHelper(this,"PRUEBADB", null,1) {
             @Override
@@ -57,8 +62,18 @@ public class LoginPXMC extends AppCompatActivity {
 
         sql.insert("PRUEBADB","usuarios", values);
 
+
         usuario = findViewById(R.id.editTextUsuarioPXMC);
         contraseña = findViewById(R.id.editTextContraseñaPXMC);
+        aceptar = findViewById(R.id.buttonAceptarPXMC);
+
+
+        aceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Onclick_Aceptar(view);
+            }
+        });
     }
 
     public void Onclick_Aceptar(View v){

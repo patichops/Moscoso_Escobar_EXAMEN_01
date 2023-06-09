@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        this.getIntent().getExtras();
+
         numero1 = findViewById(R.id.numero1);
         numero2 = findViewById(R.id.numero2);
         sumarButton = findViewById(R.id.buttonSumar);

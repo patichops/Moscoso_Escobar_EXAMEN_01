@@ -1,6 +1,7 @@
 package com.example.moscoso_escobar_examen_01;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.database.sqlite.SQLiteDatabaseKt;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import com.example.moscoso_escobar_examen_01.UsuarioPXMC;
 public class LoginPXMC extends AppCompatActivity {
 
     private SQLiteDatabase sql;
+    private SQLiteOpenHelper sqLiteOpenHelper;
     private EditText usuario;
     private EditText contraseña;
 
@@ -25,11 +27,23 @@ public class LoginPXMC extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        sqLiteOpenHelper = new SQLiteOpenHelper(this,"PRUEBADB", null,1) {
+            @Override
+            public void onCreate(SQLiteDatabase sqLiteDatabase) {
+                final String ELIMINAR="DROP TABLE IF EXISTS USUARIOS";
+                final String USUARIOS="CREATE TABLE USUARIOS(nombre TEXT, clave TEXT)";
+                sql.execSQL(ELIMINAR);
+                sql.execSQL(USUARIOS);
+            }
+
+            @Override
+            public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+            }
+        };
 
 
-        final String USUARIOS="CREATE TABLE USUARIOS(nombre TEXT, clave TEXT)";
-
-        sql.execSQL(USUARIOS);
+        sql = sqLiteOpenHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put("usuario", "usuario1");
@@ -45,7 +59,6 @@ public class LoginPXMC extends AppCompatActivity {
 
         usuario = findViewById(R.id.editTextUsuarioPXMC);
         contraseña = findViewById(R.id.editTextContraseñaPXMC);
-
     }
 
     public void Onclick_Aceptar(View v){
@@ -63,9 +76,12 @@ public class LoginPXMC extends AppCompatActivity {
             Cursor cursor = sql.rawQuery(SELECT, null);
 
             if (cursor.moveToFirst()){
-
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.putExtra("usuario", user);
+                sql.close();
+                startActivity(intent);
             } else {
-                Toast.makeText(this, "LLene todos los campos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Usuario no existente, compruebe su contraseña o nombre de usuario", Toast.LENGTH_SHORT).show();
             }
 
         }
